@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :enrollments, only: [ :create ] do
+      resources :enrollments, only: [ :create, :index ] do
         member do
           patch :approve
           patch :reject
