@@ -11,6 +11,14 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, :school_id)
+    permitted = %i[name email password password_confirmation]
+
+    if current_user&.admin?
+      permitted += %i[role school_id]
+    elsif current_user&.school_admin?
+      permitted << :role
+    end
+
+    params.require(:user).permit(permitted)
   end
 end
