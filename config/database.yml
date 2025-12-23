@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'postgres' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'postgres' } %>
+  host: <%= ENV.fetch("DB_HOST") { 'localhost' } %>
+
+development:
+  <<: *default
+  database: edu_platform_development
+
+test:
+  <<: *default
+  database: edu_platform_test
+
+production:
+  <<: *default
+  database: edu_platform_production
