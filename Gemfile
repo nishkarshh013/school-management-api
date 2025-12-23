@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.1.1"
 # Use sqlite3 as the database for Active Record
-gem 'pg', '~> 1.5', '>= 1.5.9'
+gem "pg", "~> 1.5", ">= 1.5.9"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -60,8 +60,14 @@ group :development, :test do
   gem "pry"
 end
 
-group :test do 
+group :development do
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+end
+
+group :test do
   gem "rspec-rails"
-  gem 'factory_bot_rails', '~> 6.4', '>= 6.4.4'
+  gem "factory_bot_rails", "~> 6.4", ">= 6.4.4"
   gem "faker"
 end

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe CoursePolicy do 
-
-  describe '#create?' do 
-    it "allows school admin to create course" do 
+RSpec.describe CoursePolicy do
+  describe '#create?' do
+    it "allows school admin to create course" do
       school_admin = create(:user, :school_admin)
       course = Course.new(school: school_admin.school)
       policy = CoursePolicy.new(school_admin, course)
@@ -41,20 +40,20 @@ RSpec.describe CoursePolicy do
   end
 
   describe 'Scope' do
-    subject(:resolved_scoped) do 
+    subject(:resolved_scoped) do
       CoursePolicy::Scope.new(current_user, Course).resolve
     end
 
     let(:school) { create(:school) }
 
     context 'as_admin' do
-      let(:current_user) { create(:user, :admin, school: school)}
+      let(:current_user) { create(:user, :admin, school: school) }
 
       it "returns all courses" do
         course_a = create(:course)
         course_b = create(:course)
 
-        expect(resolved_scoped).to match_array([course_a, course_b])
+        expect(resolved_scoped).to match_array([ course_a, course_b ])
       end
     end
 

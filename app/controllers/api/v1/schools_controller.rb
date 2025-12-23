@@ -1,5 +1,4 @@
 class Api::V1::SchoolsController < ApplicationController
-
   before_action :authenticate_request
 
   def index

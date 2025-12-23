@@ -1,5 +1,4 @@
 class Api::V1::EnrollmentsController < ApplicationController
-
   def create
     enrollment = Enrollment.new(enrollment_params.merge(student: current_user))
     authorize enrollment

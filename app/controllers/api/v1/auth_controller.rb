@@ -1,14 +1,14 @@
 class Api::V1::AuthController < ApplicationController
-  skip_before_action :authenticate_request, only: [:login]
+  skip_before_action :authenticate_request, only: [ :login ]
 
   def login
     user = User.find_by(email: params[:email])
 
     if user&.authenticate(params[:password])
       token = JsonWebToken.encode(user_id: user.id)
-      render json: {user: user, token: token}, status: :ok
+      render json: { user: user, token: token }, status: :ok
     else
-      render json: {error: "Invalid credentials"}, status: :unauthorized
+      render json: { error: "Invalid credentials" }, status: :unauthorized
     end
   end
 end

@@ -9,19 +9,19 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :api do
-    namespace :v1 do 
-      post '/login', to: "auth#login"
+    namespace :v1 do
+      post "/login", to: "auth#login"
 
-      resources :users, only: [:create]
-      resources :courses, only: [:index, :create, :update, :show]
-      resources :schools, only: [:index, :show, :create, :update]
-      resources :batches, only: [:index, :show, :create, :update] do 
+      resources :users, only: [ :create ]
+      resources :courses, only: [ :index, :create, :update, :show ]
+      resources :schools, only: [ :index, :show, :create, :update ]
+      resources :batches, only: [ :index, :show, :create, :update ] do
          member do
           get :students
         end
       end
 
-      resources :enrollments, only: [:create] do
+      resources :enrollments, only: [ :create ] do
         member do
           patch :approve
           patch :reject

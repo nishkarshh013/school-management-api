@@ -117,7 +117,7 @@ RSpec.describe SchoolPolicy do
       let(:current_user) { admin }
 
       it 'returns all schools' do
-        expect(resolved_scope).to match_array([school_a, school_b])
+        expect(resolved_scope).to match_array([ school_a, school_b ])
       end
     end
 
@@ -125,7 +125,7 @@ RSpec.describe SchoolPolicy do
       let(:current_user) { school_admin_a }
 
       it 'returns only their own school' do
-        expect(resolved_scope).to match_array([school_a])
+        expect(resolved_scope).to match_array([ school_a ])
       end
     end
 

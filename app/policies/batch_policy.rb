@@ -8,7 +8,7 @@ class BatchPolicy < ApplicationPolicy
   end
 
   def show?
-    user.admin? || school_admin_can_access? || student_can_access? 
+    user.admin? || school_admin_can_access? || student_can_access?
   end
 
   def index?

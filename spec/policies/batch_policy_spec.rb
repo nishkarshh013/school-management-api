@@ -2,7 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe BatchPolicy do
-
   let(:school_a) { create(:school) }
   let(:school_b) { create(:school) }
 
@@ -55,7 +54,6 @@ RSpec.describe BatchPolicy do
   end
 
   describe 'Scope' do
-
     subject(:resolved_scope) do
       BatchPolicy::Scope.new(current_user, Batch).resolve
     end
@@ -64,7 +62,7 @@ RSpec.describe BatchPolicy do
       let(:current_user) { admin }
 
       it 'returns all batches' do
-        expect(resolved_scope).to match_array([batch_a, batch_b])
+        expect(resolved_scope).to match_array([ batch_a, batch_b ])
       end
     end
 
@@ -72,7 +70,7 @@ RSpec.describe BatchPolicy do
       let(:current_user) { school_admin_a }
 
       it 'returns only batches from their school' do
-        expect(resolved_scope).to match_array([batch_a])
+        expect(resolved_scope).to match_array([ batch_a ])
       end
     end
 
@@ -81,7 +79,7 @@ RSpec.describe BatchPolicy do
       let(:current_user) { student }
 
       it 'returns only batches the student is approved for' do
-        expect(resolved_scope).to match_array([batch_a])
+        expect(resolved_scope).to match_array([ batch_a ])
       end
     end
   end

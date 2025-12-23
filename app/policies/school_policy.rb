@@ -1,5 +1,4 @@
 class SchoolPolicy < ApplicationPolicy
-
   def index?
     user.admin?
   end

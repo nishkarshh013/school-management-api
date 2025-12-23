@@ -11,7 +11,7 @@ class EnrollmentPolicy < ApplicationPolicy
     user.school_admin? && record.batch.course.school_id == user.school_id
   end
 
-  #scope auth
+  # scope auth
 
   class Scope < Scope
     def resolve
@@ -19,8 +19,8 @@ class EnrollmentPolicy < ApplicationPolicy
         scope.all
       elsif user.school_admin?
         scope
-          .joins(batch:{course: :school})
-          .where(school: {id: user.school_id})
+          .joins(batch: { course: :school })
+          .where(school: { id: user.school_id })
       else
         scope.where(student: user)
       end

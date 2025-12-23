@@ -2,7 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe EnrollmentPolicy do
-
   let(:school_a) { create(:school) }
   let(:school_b) { create(:school) }
 
@@ -71,7 +70,7 @@ RSpec.describe EnrollmentPolicy do
       let(:current_user) { admin }
 
       it 'returns all enrollments' do
-        expect(resolved_scope).to match_array([enrollment_a, enrollment_b])
+        expect(resolved_scope).to match_array([ enrollment_a, enrollment_b ])
       end
     end
 
@@ -79,7 +78,7 @@ RSpec.describe EnrollmentPolicy do
       let(:current_user) { school_admin_a }
 
       it 'returns only enrollments belonging to their school' do
-        expect(resolved_scope).to match_array([enrollment_a])
+        expect(resolved_scope).to match_array([ enrollment_a ])
       end
     end
 
@@ -87,7 +86,7 @@ RSpec.describe EnrollmentPolicy do
       let(:current_user) { student_a }
 
       it 'returns only their own enrollments' do
-        expect(resolved_scope).to match_array([enrollment_a])
+        expect(resolved_scope).to match_array([ enrollment_a ])
       end
     end
   end
